@@ -18,7 +18,7 @@ export default {
 
   mounted() {
     if (window.top === window.self) {
-      //window.location.assign('https://app.storyblok.com/oauth/app_redirect')
+      window.location.assign('https://app.storyblok.com/oauth/tool_redirect')
     }
 
     window.addEventListener('message', this.processMessage, false)
