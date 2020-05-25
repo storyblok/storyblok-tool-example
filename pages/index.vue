@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -28,6 +30,19 @@ export default {
     
     // Use heightChange to change the height of the tool
     // window.parent.postMessage({action: 'tool-changed', tool: 'storyblok@first-tool', event: 'heightChange', height: 500}, 'https://app.storyblok.com')
+
+    // Example to get the user info
+    axios
+      .get('/auth/user', {params: {space_id: this.$route.query.space_id}})
+      .then((response) => {
+        console.log(response.data)
+      })
+
+    axios
+      .get(`/auth/spaces/${this.$route.query.space_id}/stories`)
+      .then((response) => {
+        console.log(response.data)
+      })
   },
   methods: {
     processMessage(event) {
